@@ -192,55 +192,87 @@ const getAllUpazilas = async (req, res) => {
       search,
       district_id,
       fields,
+      groupByDistrict, // optional: ?groupByDistrict=true
     } = req.query;
 
-    // Build query object
-    let query = {};
+    // Build match query
+    let match = {};
 
-    // Search functionality
     if (search) {
-      query.$or = [
+      match.$or = [
         { name: { $regex: search, $options: "i" } },
         { bn_name: { $regex: search, $options: "i" } },
       ];
     }
 
-    // Filter by district_id
     if (district_id) {
-      query.district_id = parseInt(district_id);
+      match.district_id = parseInt(district_id);
     }
 
-    // Build sort object
-    const sort = {};
-    sort[sortBy] = sortOrder === "desc" ? -1 : 1;
+    if (groupByDistrict === "true") {
+      // 👉 Aggregate to count upazilas per district
+      const results = await SubDistrict.aggregate([
+        { $match: match },
+        {
+          $group: {
+            _id: "$district_id",
+            total_upazilas: { $sum: 1 },
+          },
+        },
+        { $sort: { _id: 1 } },
+        { $skip: (page - 1) * parseInt(limit) },
+        { $limit: parseInt(limit) },
+      ]);
 
-    // Select fields
-    let selectFields = "";
-    if (fields) {
-      selectFields = fields.split(",").join(" ");
+      const totalGroups = await SubDistrict.aggregate([
+        { $match: match },
+        { $group: { _id: "$district_id" } },
+        { $count: "count" },
+      ]);
+
+      res.status(200).json({
+        success: true,
+        message: "Upazila counts by district retrieved successfully",
+        data: results.map((r) => ({
+          district_id: r._id,
+          upazila_count: r.total_upazilas,
+        })),
+        pagination: {
+          current: parseInt(page),
+          total: totalGroups[0]?.count || 0,
+          pageSize: parseInt(limit),
+        },
+      });
+    } else {
+      // 👉 Normal upazila list
+      const sort = {};
+      sort[sortBy] = sortOrder === "desc" ? -1 : 1;
+
+      let selectFields = "";
+      if (fields) {
+        selectFields = fields.split(",").join(" ");
+      }
+
+      const upazilas = await SubDistrict.find(match)
+        .select(selectFields)
+        .sort(sort)
+        .limit(limit * 1)
+        .skip((page - 1) * limit);
+
+      const total = await SubDistrict.countDocuments(match);
+
+      res.status(200).json({
+        success: true,
+        message: "Upazilas retrieved successfully",
+        data: upazilas,
+        pagination: {
+          current: parseInt(page),
+          total: Math.ceil(total / limit),
+          pageSize: parseInt(limit),
+          totalCount: total,
+        },
+      });
     }
-
-    // Execute query with pagination - only upazila data
-    const upazilas = await SubDistrict.find(query)
-      .select(selectFields)
-      .sort(sort)
-      .limit(limit * 1)
-      .skip((page - 1) * limit);
-
-    // Get total count for pagination
-    const total = await SubDistrict.countDocuments(query);
-
-    res.status(200).json({
-      success: true,
-      message: "Upazilas retrieved successfully",
-      data: upazilas,
-      pagination: {
-        current: parseInt(page),
-        total: Math.ceil(total / limit),
-        pageSize: parseInt(limit),
-        totalCount: total,
-      },
-    });
   } catch (error) {
     console.error("Error fetching upazilas:", error);
     res.status(500).json({
