@@ -1,0 +1,642 @@
+[
+  {
+    "id": 33,
+    "name": "Bagerhat",
+    "bn_name": "বাগেরহাট",
+    "division_id": 4,
+    "url": "bagerhat",
+    "lat": 22.651568,
+    "lon": 89.785938,
+    "is_metro": false
+  },
+  {
+    "id": 44,
+    "name": "Barguna",
+    "bn_name": "বরগুনা",
+    "division_id": 5,
+    "url": "barguna",
+    "lat": 22.0953,
+    "lon": 90.1121,
+    "is_metro": false
+  },
+  {
+    "id": 43,
+    "name": "Barishal",
+    "bn_name": "বরিশাল",
+    "division_id": 5,
+    "url": "barishal",
+    "lat": 22.701,
+    "lon": 90.3535,
+    "is_metro": true
+  },
+  {
+    "id": 14,
+    "name": "Bandarban",
+    "bn_name": "বান্দরবান",
+    "division_id": 2,
+    "url": "bandarban",
+    "lat": 21.8311,
+    "lon": 92.3706,
+    "is_metro": false
+  },
+  {
+    "id": 45,
+    "name": "Bhola",
+    "bn_name": "ভোলা",
+    "division_id": 5,
+    "url": "bhola",
+    "lat": 22.6859,
+    "lon": 90.6486,
+    "is_metro": false
+  },
+  {
+    "id": 25,
+    "name": "Bogra",
+    "bn_name": "বগুড়া",
+    "division_id": 3,
+    "url": "bogra",
+    "lat": 24.8465228,
+    "lon": 89.377755,
+    "is_metro": false
+  },
+  {
+    "id": 15,
+    "name": "Brahmanbaria",
+    "bn_name": "ব্রাহ্মণবাড়িয়া",
+    "division_id": 2,
+    "url": "brahmanbaria",
+    "lat": 23.9570904,
+    "lon": 91.1119286,
+    "is_metro": false
+  },
+  {
+    "id": 16,
+    "name": "Chandpur",
+    "bn_name": "চাঁদপুর",
+    "division_id": 2,
+    "url": "chandpur",
+    "lat": 23.2332585,
+    "lon": 90.6712662,
+    "is_metro": false
+  },
+  {
+    "id": 29,
+    "name": "Chapainawabganj",
+    "bn_name": "চাঁপাইনবাবগঞ্জ",
+    "division_id": 3,
+    "url": "chapainawabganj",
+    "lat": 24.5963,
+    "lon": 88.2775,
+    "is_metro": false
+  },
+  {
+    "id": 17,
+    "name": "Chattogram",
+    "bn_name": "চট্টগ্রাম",
+    "division_id": 2,
+    "url": "chattogram",
+    "lat": 22.335109,
+    "lon": 91.834073,
+    "is_metro": true
+  },
+  {
+    "id": 34,
+    "name": "Chuadanga",
+    "bn_name": "চুয়াডাঙ্গা",
+    "division_id": 4,
+    "url": "chuadanga",
+    "lat": 23.6401961,
+    "lon": 88.841841,
+    "is_metro": false
+  },
+  {
+    "id": 18,
+    "name": "Comilla",
+    "bn_name": "কুমিল্লা",
+    "division_id": 2,
+    "url": "comilla",
+    "lat": 23.4682747,
+    "lon": 91.1788135,
+    "is_metro": true
+  },
+  {
+    "id": 19,
+    "name": "Cox's Bazar",
+    "bn_name": "কক্সবাজার",
+    "division_id": 2,
+    "url": "coxs-bazar",
+    "lat": 21.4272,
+    "lon": 92.0058,
+    "is_metro": false
+  },
+  {
+    "id": 1,
+    "name": "Dhaka",
+    "bn_name": "ঢাকা",
+    "division_id": 1,
+    "url": "dhaka",
+    "lat": 23.7115253,
+    "lon": 90.4111451,
+    "is_metro": true
+  },
+  {
+    "id": 53,
+    "name": "Dinajpur",
+    "bn_name": "দিনাজপুর",
+    "division_id": 7,
+    "url": "dinajpur",
+    "lat": 25.6216,
+    "lon": 88.6358,
+    "is_metro": false
+  },
+  {
+    "id": 2,
+    "name": "Faridpur",
+    "bn_name": "ফরিদপুর",
+    "division_id": 1,
+    "url": "faridpur",
+    "lat": 23.6070822,
+    "lon": 89.8429406,
+    "is_metro": false
+  },
+  {
+    "id": 20,
+    "name": "Feni",
+    "bn_name": "ফেনী",
+    "division_id": 2,
+    "url": "feni",
+    "lat": 23.0159,
+    "lon": 91.3976,
+    "is_metro": false
+  },
+  {
+    "id": 54,
+    "name": "Gaibandha",
+    "bn_name": "গাইবান্ধা",
+    "division_id": 7,
+    "url": "gaibandha",
+    "lat": 25.3287,
+    "lon": 89.5281,
+    "is_metro": false
+  },
+  {
+    "id": 3,
+    "name": "Gazipur",
+    "bn_name": "গাজীপুর",
+    "division_id": 1,
+    "url": "gazipur",
+    "lat": 24.0022858,
+    "lon": 90.4264283,
+    "is_metro": true
+  },
+  {
+    "id": 4,
+    "name": "Gopalganj",
+    "bn_name": "গোপালগঞ্জ",
+    "division_id": 1,
+    "url": "gopalganj",
+    "lat": 23.0050857,
+    "lon": 89.8266059,
+    "is_metro": false
+  },
+  {
+    "id": 49,
+    "name": "Habiganj",
+    "bn_name": "হবিগঞ্জ",
+    "division_id": 6,
+    "url": "habiganj",
+    "lat": 24.3749,
+    "lon": 91.4155,
+    "is_metro": false
+  },
+  {
+    "id": 61,
+    "name": "Jamalpur",
+    "bn_name": "জামালপুর",
+    "division_id": 8,
+    "url": "jamalpur",
+    "lat": 24.9375,
+    "lon": 89.9373,
+    "is_metro": false
+  },
+  {
+    "id": 35,
+    "name": "Jashore",
+    "bn_name": "যশোর",
+    "division_id": 4,
+    "url": "jashore",
+    "lat": 23.16643,
+    "lon": 89.2081126,
+    "is_metro": false
+  },
+  {
+    "id": 46,
+    "name": "Jhalokati",
+    "bn_name": "ঝালকাঠি",
+    "division_id": 5,
+    "url": "jhalokati",
+    "lat": 22.6406,
+    "lon": 90.1987,
+    "is_metro": false
+  },
+  {
+    "id": 36,
+    "name": "Jhenaidah",
+    "bn_name": "ঝিনাইদহ",
+    "division_id": 4,
+    "url": "jhenaidah",
+    "lat": 23.5448176,
+    "lon": 89.1539213,
+    "is_metro": false
+  },
+  {
+    "id": 26,
+    "name": "Joypurhat",
+    "bn_name": "জয়পুরহাট",
+    "division_id": 3,
+    "url": "joypurhat",
+    "lat": 25.0968,
+    "lon": 89.0227,
+    "is_metro": false
+  },
+  {
+    "id": 21,
+    "name": "Khagrachhari",
+    "bn_name": "খাগড়াছড়ি",
+    "division_id": 2,
+    "url": "khagrachhari",
+    "lat": 23.1193,
+    "lon": 91.9846,
+    "is_metro": false
+  },
+  {
+    "id": 37,
+    "name": "Khulna",
+    "bn_name": "খুলনা",
+    "division_id": 4,
+    "url": "khulna",
+    "lat": 22.815774,
+    "lon": 89.568679,
+    "is_metro": true
+  },
+  {
+    "id": 5,
+    "name": "Kishoreganj",
+    "bn_name": "কিশোরগঞ্জ",
+    "division_id": 1,
+    "url": "kishoreganj",
+    "lat": 24.444937,
+    "lon": 90.7765754,
+    "is_metro": false
+  },
+  {
+    "id": 55,
+    "name": "Kurigram",
+    "bn_name": "কুড়িগ্রাম",
+    "division_id": 7,
+    "url": "kurigram",
+    "lat": 25.8054,
+    "lon": 89.6362,
+    "is_metro": false
+  },
+  {
+    "id": 38,
+    "name": "Kushtia",
+    "bn_name": "কুষ্টিয়া",
+    "division_id": 4,
+    "url": "kushtia",
+    "lat": 23.901258,
+    "lon": 89.120482,
+    "is_metro": false
+  },
+  {
+    "id": 22,
+    "name": "Lakshmipur",
+    "bn_name": "লক্ষ্মীপুর",
+    "division_id": 2,
+    "url": "lakshmipur",
+    "lat": 22.9424,
+    "lon": 90.8418,
+    "is_metro": false
+  },
+  {
+    "id": 56,
+    "name": "Lalmonirhat",
+    "bn_name": "লালমনিরহাট",
+    "division_id": 7,
+    "url": "lalmonirhat",
+    "lat": 25.9923,
+    "lon": 89.2847,
+    "is_metro": false
+  },
+  {
+    "id": 6,
+    "name": "Madaripur",
+    "bn_name": "মাদারীপুর",
+    "division_id": 1,
+    "url": "madaripur",
+    "lat": 23.164102,
+    "lon": 90.1896805,
+    "is_metro": false
+  },
+  {
+    "id": 39,
+    "name": "Magura",
+    "bn_name": "মাগুরা",
+    "division_id": 4,
+    "url": "magura",
+    "lat": 23.487337,
+    "lon": 89.419956,
+    "is_metro": false
+  },
+  {
+    "id": 7,
+    "name": "Manikganj",
+    "bn_name": "মানিকগঞ্জ",
+    "division_id": 1,
+    "url": "manikganj",
+    "lat": 23.8644,
+    "lon": 90.0047,
+    "is_metro": false
+  },
+  {
+    "id": 40,
+    "name": "Meherpur",
+    "bn_name": "মেহেরপুর",
+    "division_id": 4,
+    "url": "meherpur",
+    "lat": 23.762213,
+    "lon": 88.631821,
+    "is_metro": false
+  },
+  {
+    "id": 50,
+    "name": "Moulvibazar",
+    "bn_name": "মৌলভীবাজার",
+    "division_id": 6,
+    "url": "moulvibazar",
+    "lat": 24.4829,
+    "lon": 91.7774,
+    "is_metro": false
+  },
+  {
+    "id": 8,
+    "name": "Munshiganj",
+    "bn_name": "মুন্সিগঞ্জ",
+    "division_id": 1,
+    "url": "munshiganj",
+    "lat": 23.5432,
+    "lon": 90.5354,
+    "is_metro": false
+  },
+  {
+    "id": 62,
+    "name": "Mymensingh",
+    "bn_name": "ময়মনসিংহ",
+    "division_id": 8,
+    "url": "mymensingh",
+    "lat": 24.7471,
+    "lon": 90.4203,
+    "is_metro": true
+  },
+  {
+    "id": 41,
+    "name": "Narail",
+    "bn_name": "নড়াইল",
+    "division_id": 4,
+    "url": "narail",
+    "lat": 23.172534,
+    "lon": 89.512672,
+    "is_metro": false
+  },
+  {
+    "id": 9,
+    "name": "Narayanganj",
+    "bn_name": "নারায়ণগঞ্জ",
+    "division_id": 1,
+    "url": "narayanganj",
+    "lat": 23.63366,
+    "lon": 90.496482,
+    "is_metro": true
+  },
+  {
+    "id": 10,
+    "name": "Narsingdi",
+    "bn_name": "নরসিংদী",
+    "division_id": 1,
+    "url": "narsingdi",
+    "lat": 23.932233,
+    "lon": 90.71541,
+    "is_metro": false
+  },
+  {
+    "id": 27,
+    "name": "Naogaon",
+    "bn_name": "নওগাঁ",
+    "division_id": 3,
+    "url": "naogaon",
+    "lat": 24.7936,
+    "lon": 88.9318,
+    "is_metro": false
+  },
+  {
+    "id": 28,
+    "name": "Natore",
+    "bn_name": "নাটোর",
+    "division_id": 3,
+    "url": "natore",
+    "lat": 24.420556,
+    "lon": 89.000282,
+    "is_metro": false
+  },
+  {
+    "id": 63,
+    "name": "Netrokona",
+    "bn_name": "নেত্রকোণা",
+    "division_id": 8,
+    "url": "netrokona",
+    "lat": 24.8703,
+    "lon": 90.7274,
+    "is_metro": false
+  },
+  {
+    "id": 57,
+    "name": "Nilphamari",
+    "bn_name": "নীলফামারী",
+    "division_id": 7,
+    "url": "nilphamari",
+    "lat": 25.9667,
+    "lon": 88.95,
+    "is_metro": false
+  },
+  {
+    "id": 23,
+    "name": "Noakhali",
+    "bn_name": "নোয়াখালী",
+    "division_id": 2,
+    "url": "noakhali",
+    "lat": 22.8696,
+    "lon": 91.0994,
+    "is_metro": false
+  },
+  {
+    "id": 30,
+    "name": "Pabna",
+    "bn_name": "পাবনা",
+    "division_id": 3,
+    "url": "pabna",
+    "lat": 24.0064,
+    "lon": 89.2372,
+    "is_metro": false
+  },
+  {
+    "id": 58,
+    "name": "Panchagarh",
+    "bn_name": "পঞ্চগড়",
+    "division_id": 7,
+    "url": "panchagarh",
+    "lat": 26.3411,
+    "lon": 88.5546,
+    "is_metro": false
+  },
+  {
+    "id": 47,
+    "name": "Patuakhali",
+    "bn_name": "পটুয়াখালী",
+    "division_id": 5,
+    "url": "patuakhali",
+    "lat": 22.3596316,
+    "lon": 90.3298712,
+    "is_metro": false
+  },
+  {
+    "id": 48,
+    "name": "Pirojpur",
+    "bn_name": "পিরোজপুর",
+    "division_id": 5,
+    "url": "pirojpur",
+    "lat": 22.5841,
+    "lon": 89.972,
+    "is_metro": false
+  },
+  {
+    "id": 11,
+    "name": "Rajbari",
+    "bn_name": "রাজবাড়ী",
+    "division_id": 1,
+    "url": "rajbari",
+    "lat": 23.7574305,
+    "lon": 89.6444665,
+    "is_metro": false
+  },
+  {
+    "id": 31,
+    "name": "Rajshahi",
+    "bn_name": "রাজশাহী",
+    "division_id": 3,
+    "url": "rajshahi",
+    "lat": 24.3745,
+    "lon": 88.6042,
+    "is_metro": true
+  },
+  {
+    "id": 24,
+    "name": "Rangamati",
+    "bn_name": "রাঙ্গামাটি",
+    "division_id": 2,
+    "url": "rangamati",
+    "lat": 22.7324,
+    "lon": 92.2985,
+    "is_metro": false
+  },
+  {
+    "id": 59,
+    "name": "Rangpur",
+    "bn_name": "রংপুর",
+    "division_id": 7,
+    "url": "rangpur",
+    "lat": 25.7439,
+    "lon": 89.2752,
+    "is_metro": true
+  },
+  {
+    "id": 42,
+    "name": "Satkhira",
+    "bn_name": "সাতক্ষীরা",
+    "division_id": 4,
+    "url": "satkhira",
+    "lat": 22.7185,
+    "lon": 89.0705,
+    "is_metro": false
+  },
+  {
+    "id": 12,
+    "name": "Shariatpur",
+    "bn_name": "শরীয়তপুর",
+    "division_id": 1,
+    "url": "shariatpur",
+    "lat": 23.2060195,
+    "lon": 90.3477723,
+    "is_metro": false
+  },
+  {
+    "id": 64,
+    "name": "Sherpur",
+    "bn_name": "শেরপুর",
+    "division_id": 8,
+    "url": "sherpur",
+    "lat": 25.0205,
+    "lon": 90.0159,
+    "is_metro": false
+  },
+  {
+    "id": 32,
+    "name": "Sirajganj",
+    "bn_name": "সিরাজগঞ্জ",
+    "division_id": 3,
+    "url": "sirajganj",
+    "lat": 24.4533978,
+    "lon": 89.7006815,
+    "is_metro": false
+  },
+  {
+    "id": 51,
+    "name": "Sunamganj",
+    "bn_name": "সুনামগঞ্জ",
+    "division_id": 6,
+    "url": "sunamganj",
+    "lat": 25.0658,
+    "lon": 91.395,
+    "is_metro": false
+  },
+  {
+    "id": 52,
+    "name": "Sylhet",
+    "bn_name": "সিলেট",
+    "division_id": 6,
+    "url": "sylhet",
+    "lat": 24.891,
+    "lon": 91.871,
+    "is_metro": true
+  },
+  {
+    "id": 13,
+    "name": "Tangail",
+    "bn_name": "টাঙ্গাইল",
+    "division_id": 1,
+    "url": "tangail",
+    "lat": 24.2636137,
+    "lon": 89.917947,
+    "is_metro": false
+  },
+  {
+    "id": 60,
+    "name": "Thakurgaon",
+    "bn_name": "ঠাকুরগাঁও",
+    "division_id": 7,
+    "url": "thakurgaon",
+    "lat": 26.0337,
+    "lon": 88.4614,
+    "is_metro": false
+  }
+]
