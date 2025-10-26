@@ -30,6 +30,7 @@ const createDistrict = async (req, res) => {
 };
 
 // GET all districts (optionally filter by division)
+
 const getDistricts = async (req, res) => {
   try {
     const { division_id } = req.query; // optional query param
@@ -39,7 +40,9 @@ const getDistricts = async (req, res) => {
       filter.division_id = Number(division_id);
     }
 
-    const districts = await District.find(filter).sort({ name: 1 }); // A-Z by name
+    // Fetch districts from DB and sort by 'id' ascending
+    const districts = await District.find(filter).sort({ id: 1 });
+
     res.status(200).json({ success: true, data: districts });
   } catch (err) {
     console.error(err);
