@@ -186,7 +186,7 @@ const getAllUpazilas = async (req, res) => {
   try {
     const {
       page = 1,
-      limit = 50,
+      limit = 495,
       sortBy = "id",
       sortOrder = "asc",
       search,
