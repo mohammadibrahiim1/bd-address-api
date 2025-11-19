@@ -6,9 +6,9 @@ interface AuthRequest extends Request {
   user?: { id: string; role: string };
 }
 
-const JWT_SECRET = process.env.JWT_SECRET_KEY || "fallbackSecret";
+const JWT_SECRET = process.env.JWT_SECRET_KEY || "supersecret";
 
-export const protect = (
+export const protect = async (
   req: AuthRequest,
   res: Response,
   next: NextFunction
@@ -29,7 +29,7 @@ export const protect = (
 
   if (!token)
     return res.status(401).json({
-      message: "Not authorized - No token",
+      message: "Not authorized!",
     });
 
   try {
@@ -41,9 +41,7 @@ export const protect = (
       id: decoded.id,
       role: decoded.role,
     });
-
     req.user = decoded;
-
     next();
   } catch (error) {
     console.log("JWT Error:", error);
@@ -62,4 +60,18 @@ export const protect = (
       message: "Authentication failed",
     });
   }
+};
+
+export const adminOnly = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  if (req.user?.role !== "admin") {
+    return res.status(403).json({
+      success: false,
+      message: "Admin access only",
+    });
+  }
+  next();
 };
