@@ -55,7 +55,21 @@ connectDB();
 const app: Application = express();
 
 // Middleware
-app.use(cors());
+const allowedOrigins = ["http://localhost:3000"]; // frontend URL
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      //allow requests with no origin
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

@@ -1,6 +1,7 @@
 import User from "../models/user.model";
 import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
+import mongoose from "mongoose";
 
 const JWT_SECRET = process.env.JWT_SECRET_KEY || "supersecret";
 const JWT_EXPIRES_IN = "10m";
@@ -11,7 +12,17 @@ interface AuthRequest extends Request {
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, confirmPassword } = req.body;
+
+    // password match
+    if (password !== confirmPassword) {
+      return res.status(400).json({
+        success: false,
+        errors: {
+          confirmPassword: "Password do not match.",
+        },
+      });
+    }
 
     //check if email already exists
     const existingUser = await User.findOne({ email });
@@ -19,7 +30,7 @@ export const registerUser = async (req: Request, res: Response) => {
     if (existingUser) {
       return res
         .status(400)
-        .json({ success: false, message: "Email already registered" });
+        .json({ success: false, message: "Email already registered!" });
     }
 
     const user = await User.create({
@@ -57,9 +68,47 @@ export const registerUser = async (req: Request, res: Response) => {
       },
     });
   } catch (error: any) {
+    console.log("Registration error:", error);
+    // validation error
+    // Mongoose validation errors - EIKHANE MODEL ER VALIDATION MESSAGE GULU ASHBE
+    if (error instanceof mongoose.Error.ValidationError) {
+      const messages: Record<string, string> = {};
+
+      Object.keys(error.errors).forEach((field) => {
+        const errorObj = error.errors[field];
+
+        // Different types of validation errors
+        if (errorObj.kind === "required") {
+          messages[field] = errorObj.message;
+        } else if (errorObj.kind === "minlength") {
+          messages[field] = errorObj.message;
+        } else if (errorObj.kind === "maxlength") {
+          messages[field] = errorObj.message;
+        } else if (errorObj.kind === "regexp") {
+          messages[field] = errorObj.message;
+        } else {
+          messages[field] = errorObj.message;
+        }
+      });
+
+      return res.status(400).json({
+        success: false,
+        errors: messages,
+        message: "Validation failed",
+      });
+    }
+
+    //duplicate email error
+    if (error.code === 11000 && error.keyValue?.email) {
+      return res.status(400).json({
+        success: false,
+        errors: { email: "Email already registered!" },
+      });
+    }
+
     res.status(500).json({
       success: false,
-      message: error?.message,
+      message: error?.message || "Internal serve error",
     });
   }
 };
