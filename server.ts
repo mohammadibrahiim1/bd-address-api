@@ -32,7 +32,7 @@
 // // Start server
 // const PORT = process.env.PORT || 9000;
 // app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import express, { Application, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -97,6 +97,12 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
 // Start server
 const PORT: number = parseInt(process.env.PORT || "9000", 10);
+
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
+
+// Export app as a Vercel serverless function
+export default (req: VercelRequest, res: VercelResponse) => {
+  app(req, res);
+};
