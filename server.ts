@@ -54,7 +54,7 @@ connectDB();
 const app: Application = express();
 
 // Middleware
-const allowedOrigins = ["http://localhost:3000"]; // frontend URL
+const allowedOrigins = ["http://localhost:5173", "http://localhost:3000"]; // frontend URL
 app.use(
   cors({
     origin: function (origin, callback) {
