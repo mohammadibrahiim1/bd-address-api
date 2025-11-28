@@ -1,11 +1,28 @@
 import mongoose, { Model, Schema } from "mongoose";
 import bcrypt from "bcryptjs";
 
+export enum UserStatus {
+  PENDING = "pending",
+  APPROVED = "approved",
+  REJECTED = "rejected",
+}
+
+export enum UserRole {
+  TEACHER = "teacher",
+  NURSING = "nursing",
+  EMPLOYEE = "employee",
+  ADMIN = "admin",
+}
+
 export interface IUser extends Document {
+  userId?: number;
   name: string;
   email: string;
   password: string;
-  role: "user" | "admin";
+  photo?: string;
+  role: UserRole;
+  status: UserStatus;
+  isActive: boolean;
   createdAt: Date;
   updatedAt: Date;
   comparePassword(candidatePassword: string): Promise<boolean>;
@@ -13,6 +30,13 @@ export interface IUser extends Document {
 
 const userSchema: Schema<IUser> = new mongoose.Schema(
   {
+    userId: {
+      type: Number,
+      unique: true,
+      sparse: true,
+      required: [true, "User ID is required"],
+      trim: true,
+    },
     name: {
       type: String,
       required: [true, "Name is required"],
@@ -38,10 +62,22 @@ const userSchema: Schema<IUser> = new mongoose.Schema(
         "Password must be at least 8 characters, include 1 uppercase, 1 lowercase, 1 number, and 1 special character",
       ],
     },
+    photo: {
+      type: String,
+      default: "",
+    },
     role: {
       type: String,
-      enum: ["user", "admin"],
-      default: "user",
+      enum: ["admin", "teacher", "employee", "nursing"],
+    },
+    status: {
+      type: String,
+      enum: Object.values(UserStatus),
+      default: UserStatus.PENDING,
+    },
+    isActive: {
+      type: Boolean,
+      default: true,
     },
   },
   {

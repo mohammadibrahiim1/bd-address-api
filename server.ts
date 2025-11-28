@@ -57,7 +57,7 @@ const app: Application = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:3000",
-  "https://rprdac.com/",
+  "https://rprdac.com",
 ]; // frontend URL
 app.use(
   cors({

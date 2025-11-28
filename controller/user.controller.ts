@@ -1,7 +1,12 @@
-import User from "../models/user.model";
+import User, { UserRole } from "../models/user.model";
 import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 import mongoose from "mongoose";
+import {
+  Notification,
+  NotificationStatus,
+  NotificationType,
+} from "../models/notification.model";
 
 const JWT_SECRET = process.env.JWT_SECRET_KEY || "supersecret";
 const JWT_EXPIRES_IN = "10m";
@@ -12,7 +17,10 @@ interface AuthRequest extends Request {
 
 export const registerUser = async (req: Request, res: Response) => {
   try {
-    const { name, email, password, confirmPassword } = req.body;
+    const { userId, name, email, password, confirmPassword, photo, role } =
+      req.body;
+
+    console.log(req.body);
 
     // password match
     if (password !== confirmPassword) {
@@ -33,16 +41,21 @@ export const registerUser = async (req: Request, res: Response) => {
         .json({ success: false, message: "Email already registered!" });
     }
 
-    const user = await User.create({
+    const newUser = await User.create({
+      userId,
       name,
       email,
       password,
+      photo: photo || "",
+      role: role as UserRole,
+      status: "pending",
+      isActive: true,
     });
 
     const token = jwt.sign(
       {
-        id: user?._id,
-        role: user.role,
+        id: newUser?._id,
+        role: newUser.role,
       },
       JWT_SECRET,
       {
@@ -58,13 +71,32 @@ export const registerUser = async (req: Request, res: Response) => {
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
-    res.status(201).json({
+    const admins = await User.find({ role: UserRole.ADMIN });
+
+    console.log(admins);
+
+    if (admins.length > 0) {
+      const notifications = admins.map((admin) => ({
+        user: newUser._id,
+        followingUser: admin._id,
+        notificationType: NotificationType.STATUS_UPDATE,
+        targetId: newUser._id,
+        message: `New user registered:${newUser.name} is waiting for approval`,
+        role: newUser.role,
+        email: newUser.email,
+        status: NotificationStatus.PENDING,
+        isSeen: false,
+      }));
+      await Notification.insertMany(notifications);
+    }
+
+    return res.status(201).json({
       success: true,
       user: {
-        id: user._id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
+        id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+        role: newUser.role,
       },
     });
   } catch (error: any) {
@@ -112,6 +144,7 @@ export const registerUser = async (req: Request, res: Response) => {
     });
   }
 };
+
 
 export const loginUser = async (req: Request, res: Response) => {
   try {

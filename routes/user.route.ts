@@ -1,3 +1,4 @@
+import { upload } from "./../middlewares/multer";
 import { Router } from "express";
 import {
   getLoggedInUser,
@@ -9,7 +10,7 @@ import { protect } from "../middlewares/auth.middleware";
 
 const router = Router();
 
-router.post("/register", registerUser);
+router.post("/register", upload.single("photo"), registerUser);
 router.post("/login", loginUser);
 router.post("/logout", logoutUser);
 router.get("/me", protect, getLoggedInUser);
