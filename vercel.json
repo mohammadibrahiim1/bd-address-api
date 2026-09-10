@@ -11,10 +11,5 @@
       "src": "/(.*)",
       "dest": "server.ts"
     }
-  ],
-  "build": {
-    "env": {
-      "NODE_ENV": "production"
-    }
-  }
+  ]
 }

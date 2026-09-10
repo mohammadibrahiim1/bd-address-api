@@ -13,7 +13,7 @@ const router = Router();
 router.get('/notification/all', protect, async (req: Request, res: Response) => {
   try {
     // Only admin can access
-    if (req.user?.role !== UserRole.ADMIN) {
+    if ((req as Request & { user?: { role?: UserRole } }).user?.role !== UserRole.ADMIN) {
       return res.status(403).json({
         success: false,
         message: 'Access denied. Admins only.',

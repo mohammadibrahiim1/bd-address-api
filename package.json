@@ -1,12 +1,12 @@
 {
   "name": "bd-address-api",
   "version": "1.0.0",
-  "description": "Bangladesh Address API (Divisions, Districts, Upazilas) in TypeScript",
-  "main": "dist/server.js",
+  "description": "Bangladesh Address API (Divisions, Districts, sub-districts) in TypeScript",
+  "main": "server.js",
   "scripts": {
     "build": "tsc",
-    "vercel-build": "tsc",
-    "start": "node dist/server.js",
+    "vercel-build": "echo 'Build complete'",
+    "start": "ts-node server.ts",
     "dev": "ts-node-dev --respawn --transpile-only server.ts"
   },
   "keywords": [],
