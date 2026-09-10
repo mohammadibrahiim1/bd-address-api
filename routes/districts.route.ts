@@ -7,6 +7,6 @@ const router: Router = Router();
 router.post('/post', createDistrict);
 
 // GET: Retrieve all districts (optionally filter by division)
-router.get('/all', getDistricts);
+router.get('/all', getDistricts); 
 
 export default router;
