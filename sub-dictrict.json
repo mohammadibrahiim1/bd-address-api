@@ -768,12 +768,6 @@
     "district_id": 17
   },
   {
-    "id": 501,
-    "name": "Fatikchhari North",
-    "bn_name": "ফটিকছড়ি উত্তর",
-    "district_id": 17
-  },
-  {
     "id": 129,
     "name": "Debidwar",
     "bn_name": "দেবিদ্বার",
@@ -876,12 +870,6 @@
     "district_id": 18
   },
   {
-    "id": 502,
-    "name": "Bangra",
-    "bn_name": "বাঙ্গরা",
-    "district_id": 18
-  },
-  {
     "id": 146,
     "name": "Cox's Bazar Sadar",
     "bn_name": "কক্সবাজার সদর",
@@ -927,18 +915,6 @@
     "id": 153,
     "name": "Teknaf",
     "bn_name": "টেকনাফ",
-    "district_id": 19
-  },
-  {
-    "id": 495,
-    "name": "Eidgaon",
-    "bn_name": "ঈদগাঁও",
-    "district_id": 19
-  },
-  {
-    "id": 497,
-    "name": "Matamuhuri",
-    "bn_name": "মাতামুহুরী",
     "district_id": 19
   },
   {
@@ -1059,12 +1035,6 @@
     "id": 173,
     "name": "Ramganj",
     "bn_name": "রামগঞ্জ",
-    "district_id": 22
-  },
-  {
-    "id": 500,
-    "name": "Chandraganj",
-    "bn_name": "চন্দ্রগঞ্জ",
     "district_id": 22
   },
   {
@@ -1251,12 +1221,6 @@
     "id": 204,
     "name": "Shibganj",
     "bn_name": "শিবগঞ্জ",
-    "district_id": 25
-  },
-  {
-    "id": 496,
-    "name": "Mokamtala",
-    "bn_name": "মোকামতলা",
     "district_id": 25
   },
   {
@@ -2618,7 +2582,7 @@
   {
     "id": 431,
     "name": "Lalmonirhat Sadar",
-    "bn_name": "লালমনিরহাট সদর",
+    "bn_name": "লালমণিরহাট সদর",
     "district_id": 56
   },
   {
@@ -2790,18 +2754,6 @@
     "district_id": 60
   },
   {
-    "id": 498,
-    "name": "Ruhia",
-    "bn_name": "রুহিয়া",
-    "district_id": 60
-  },
-  {
-    "id": 499,
-    "name": "Bhulli",
-    "bn_name": "ভূল্লী",
-    "district_id": 60
-  },
-  {
     "id": 460,
     "name": "Jamalpur Sadar",
     "bn_name": "জামালপুর সদর",
@@ -2922,12 +2874,6 @@
     "district_id": 62
   },
   {
-    "id": 503,
-    "name": "South Gafargaon",
-    "bn_name": "দক্ষিণ গফরগাঁও",
-    "district_id": 62
-  },
-  {
     "id": 480,
     "name": "Barhatta",
     "bn_name": "বারহাট্টা",
@@ -3016,5 +2962,59 @@
     "name": "Jhenaigati",
     "bn_name": "ঝিনাইগাতী উপজেলা",
     "district_id": 64
+  },
+  {
+    "id": 495,
+    "name": "Eidgaon",
+    "bn_name": "ঈদগাঁও",
+    "district_id": 19
+  },
+  {
+    "id": 496,
+    "name": "Mokamtala",
+    "bn_name": "মোকামতলা",
+    "district_id": 25
+  },
+  {
+    "id": 497,
+    "name": "Matamuhuri",
+    "bn_name": "মাতামুহুরী",
+    "district_id": 19
+  },
+  {
+    "id": 498,
+    "name": "Ruhia",
+    "bn_name": "রুহিয়া",
+    "district_id": 60
+  },
+  {
+    "id": 499,
+    "name": "Bhulli",
+    "bn_name": "ভূল্লী",
+    "district_id": 60
+  },
+  {
+    "id": 500,
+    "name": "Chandraganj",
+    "bn_name": "চন্দ্রগঞ্জ",
+    "district_id": 22
+  },
+  {
+    "id": 501,
+    "name": "Fatikchhari North",
+    "bn_name": "ফটিকছড়ি উত্তর",
+    "district_id": 17
+  },
+  {
+    "id": 502,
+    "name": "Bangra",
+    "bn_name": "বাঙ্গরা",
+    "district_id": 18
+  },
+  {
+    "id": 503,
+    "name": "South Gafargaon",
+    "bn_name": "দক্ষিণ গফরগাঁও",
+    "district_id": 62
   }
 ]

@@ -9,6 +9,6 @@ const router: Router = Router();
 router.post('/post', createDivision);
 
 // GET: Retrieve all divisions
-router.get('/all', protect, getDivisions);
+router.get('/all', getDivisions);
 
 export default router;

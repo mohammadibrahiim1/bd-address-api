@@ -1,13 +1,13 @@
 import { Router } from 'express';
-import { createMultipleUpazilas, getAllUpazilas } from '../controller/sub-districts.controller';
+import { createMultipleSubDistricts, getAllSubDistricts } from '../controller/sub-districts.controller';
 
 const router: Router = Router();
 
-// POST: create multiple upazilas
-router.post('/post', createMultipleUpazilas);
+// POST: create multiple sub-districts
+router.post('/post', createMultipleSubDistricts);
 
-// GET: get all upazilas
-router.get('/all', getAllUpazilas);
+// GET: get all sub-districts with optional filters, pagination, and grouping
+router.get('/all', getAllSubDistricts);
 
 // Future route for divisions (uncomment when implemented)
 // router.get("/divisions", getDivisions);

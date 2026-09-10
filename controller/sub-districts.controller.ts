@@ -14,40 +14,40 @@ interface UpazilaQuery {
   groupByDistrict?: string;
 }
 
-// Create multiple upazilas
-export const createMultipleUpazilas = async (req: Request, res: Response, next: NextFunction) => {
+// Create multiple sub-districts  in bulk
+export const createMultipleSubDistricts = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const upazilas: ISubDistrict[] = req.body;
+    const subDistricts: ISubDistrict[] = req.body;
 
-    if (!Array.isArray(upazilas) || upazilas.length === 0) {
+    if (!Array.isArray(subDistricts) || subDistricts.length === 0) {
       return res.status(400).json({
         success: false,
-        message: 'Request body must be a non-empty array of upazilas',
+        message: 'Request body must be a non-empty array of sub-districts',
       });
     }
 
     // Validate required fields
-    const invalidUpazilas = upazilas
-      .map((upazila, index) => {
+    const invalidSubDistricts = subDistricts
+      .map((subDistrict, index) => {
         const missingFields: string[] = [];
-        if (!upazila.id) missingFields.push('id');
-        if (!upazila.name) missingFields.push('name');
-        if (!upazila.bn_name) missingFields.push('bn_name');
-        if (!upazila.district_id) missingFields.push('district_id');
+        if (!subDistrict.id) missingFields.push('id');
+        if (!subDistrict.name) missingFields.push('name');
+        if (!subDistrict.bn_name) missingFields.push('bn_name');
+        if (!subDistrict.district_id) missingFields.push('district_id');
         return missingFields.length ? { index, missingFields } : null;
       })
       .filter(Boolean);
 
-    if (invalidUpazilas.length > 0) {
+    if (invalidSubDistricts.length > 0) {
       return res.status(400).json({
         success: false,
-        message: 'Some upazilas are missing required fields',
-        invalidUpazilas,
+        message: 'Some sub-districts are missing required fields',
+        invalidSubDistricts,
       });
     }
 
     // Check all districts exist
-    const districtIds = [...new Set(upazilas.map((u) => u.district_id))];
+    const districtIds = [...new Set(subDistricts.map((s) => s.district_id))];
     const existingDistricts: IDistrict[] = await District.find({
       id: { $in: districtIds },
     });
@@ -57,56 +57,56 @@ export const createMultipleUpazilas = async (req: Request, res: Response, next: 
       const missingIds = districtIds.filter((id) => !foundIds.includes(id));
       return res.status(400).json({
         success: false,
-        message: 'Some districts not found',
+        message: 'Some districts not found in database',
         missingDistrictIds: missingIds,
       });
     }
 
     // Check duplicate IDs in request
-    const ids = upazilas.map((u) => u.id);
+    const ids = subDistricts.map((s) => s.id);
     if (new Set(ids).size !== ids.length) {
       const duplicateIds = ids.filter((id, idx) => ids.indexOf(id) !== idx);
       return res.status(400).json({
         success: false,
-        message: 'Duplicate IDs in request',
+        message: 'Duplicate IDs found in request body',
         duplicateIds: [...new Set(duplicateIds)],
       });
     }
 
     // Check duplicate names within same district
-    const districtUpazilaMap: Record<string, number> = {};
-    const duplicateUpazilas = upazilas.filter((u, idx) => {
-      const key = `${u.district_id}-${u.name}`;
-      if (districtUpazilaMap[key] !== undefined) return true;
-      districtUpazilaMap[key] = idx;
+    const districtSubDistrictMap: Record<string, number> = {};
+    const duplicateSubDistricts = subDistricts.filter((s, idx) => {
+      const key = `${s.district_id}-${s.name}`;
+      if (districtSubDistrictMap[key] !== undefined) return true;
+      districtSubDistrictMap[key] = idx;
       return false;
     });
 
-    if (duplicateUpazilas.length > 0) {
+    if (duplicateSubDistricts.length > 0) {
       return res.status(400).json({
         success: false,
-        message: 'Duplicate upazila names within the same district',
-        duplicateUpazilas,
+        message: 'Duplicate sub-district names within the same district',
+        duplicateSubDistricts,
       });
     }
 
-    // Check existing upazilas in DB
-    const existingUpazilas = await SubDistrict.find({
+    // Check existing sub-districts in DB
+    const existingSubDistricts = await SubDistrict.find({
       $or: [
         { id: { $in: ids } },
         {
-          $and: [{ district_id: { $in: districtIds } }, { name: { $in: upazilas.map((u) => u.name) } }],
+          $and: [{ district_id: { $in: districtIds } }, { name: { $in: subDistricts.map((s) => s.name) } }],
         },
       ],
     });
 
-    if (existingUpazilas.length > 0) {
+    if (existingSubDistricts.length > 0) {
       return res.status(400).json({
         success: false,
-        message: 'Some upazilas already exist in database',
-        conflicts: existingUpazilas.map((existing) => {
-          const conflicting = upazilas.find(
-            (u) => u.id === existing.id || (u.district_id === existing.district_id && u.name === existing.name),
+        message: 'Some sub-districts already exist in database',
+        conflicts: existingSubDistricts.map((existing) => {
+          const conflicting = subDistricts.find(
+            (s) => s.id === existing.id || (s.district_id === existing.district_id && s.name === existing.name),
           );
           return { existing, conflicting };
         }),
@@ -114,9 +114,9 @@ export const createMultipleUpazilas = async (req: Request, res: Response, next: 
     }
 
     // Insert into database
-    const createdUpazilas = await SubDistrict.insertMany(
-      upazilas.map((u) => ({
-        ...u,
+    const createdSubDistricts = await SubDistrict.insertMany(
+      subDistricts.map((s) => ({
+        ...s,
         createdAt: new Date(),
         updatedAt: new Date(),
       })),
@@ -124,22 +124,22 @@ export const createMultipleUpazilas = async (req: Request, res: Response, next: 
 
     res.status(201).json({
       success: true,
-      message: `${createdUpazilas.length} upazilas created successfully`,
-      data: createdUpazilas,
+      message: `${createdSubDistricts.length} sub-districts created successfully`,
+      data: createdSubDistricts,
     });
   } catch (error: unknown) {
-    console.error('Error creating upazilas:', error);
+    console.error('Error creating sub-districts:', error);
     res.status(500).json({
       success: false,
-      message: 'Error creating upazilas',
+      message: 'Error creating sub-districts',
       error: error instanceof Error ? error.message : error,
       stack: process.env.NODE_ENV === 'development' && error instanceof Error ? error.stack : undefined,
     });
   }
 };
 
-// Get all upazilas with optional filters, pagination, and grouping
-export const getAllUpazilas = async (req: Request<{}, {}, {}, UpazilaQuery>, res: Response, next: NextFunction) => {
+// Get all sub districts with optional filters, pagination, and grouping
+export const getAllSubDistricts = async (req: Request<{}, {}, {}, UpazilaQuery>, res: Response, next: NextFunction) => {
   try {
     const {
       page = 1,
@@ -214,7 +214,7 @@ export const getAllUpazilas = async (req: Request<{}, {}, {}, UpazilaQuery>, res
 
     res.status(200).json({
       success: true,
-      message: 'Upazilas retrieved successfully',
+      message: 'Sub districts retrieved successfully',
       data: upazilas,
       pagination: {
         current: Number(page),
